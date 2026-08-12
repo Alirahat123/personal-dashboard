@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>میز کار روزانه | کوچینگ مظاهری</title>
+    <meta name="description" content="میز کار روزانه برای مدیریت کارها، یادداشت‌ها و مرور بازار">
+    <meta name="theme-color" content="#f2eadc">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="میز روزانه">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="icon.svg">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="page-grain" aria-hidden="true"></div>
+
+    <header class="header">
+        <div class="header-content">
+            <a class="brand" href="#top" aria-label="میز کار روزانه">
+                <span class="brand-mark" aria-hidden="true">م</span>
+                <span>
+                    <strong>میز روزانه</strong>
+                    <small>برای فکرهای روشن و کارهای تمام‌شده</small>
+                </span>
+            </a>
+            <div class="header-actions">
+                <button class="install-btn" id="installBtn" type="button" hidden>
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 15v4h14v-4"/></svg>
+                    نصب اپ
+                </button>
+                <button class="theme-toggle" id="themeToggle" type="button" aria-label="فعال‌کردن حالت شب">
+                    <span class="theme-icon" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="top" class="container">
+        <section class="intro" aria-labelledby="pageTitle">
+            <div class="intro-copy">
+                <p class="eyebrow">مکث کن · انتخاب کن · انجام بده</p>
+                <h1 id="pageTitle">امروز را<br><em>آگاهانه</em> بساز.</h1>
+                <p class="intro-text">یک فضای جمع‌وجور برای ثبت اولویت‌ها، نگه‌داشتن فکرها و مرور سریع بازار؛ بدون شلوغی اضافه.</p>
+            </div>
+            <div class="day-card" aria-label="تاریخ امروز">
+                <span class="day-card-label">امروز</span>
+                <strong id="todayDay">—</strong>
+                <span id="todayDate">—</span>
+                <div class="day-card-line"></div>
+                <p><span id="openTasks">۰</span> کار باز مانده</p>
+            </div>
+        </section>
+
+        <div class="dashboard-grid">
+            <section class="card card-tasks" id="todo-section">
+                <div class="card-heading">
+                    <div>
+                        <span class="section-number">۰۱</span>
+                        <h2>کارهای امروز</h2>
+                    </div>
+                    <span class="card-kicker">اولویت‌ها</span>
+                </div>
+                <form class="todo-form" id="todoForm">
+                    <label class="sr-only" for="todoInput">کار جدید</label>
+                    <input type="text" id="todoInput" placeholder="چه کاری باید انجام شود؟" maxlength="120" autocomplete="off" required>
+                    <button type="submit" aria-label="افزودن کار">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+                    </button>
+                </form>
+                <ul class="todo-list" id="todoList" aria-live="polite"></ul>
+                <div class="empty-hint" id="todoEmpty">اولین کار امروزت را اضافه کن.</div>
+            </section>
+
+            <section class="card card-notes" id="notes-section">
+                <div class="card-heading">
+                    <div>
+                        <span class="section-number">۰۲</span>
+                        <h2>دفتر یادداشت</h2>
+                    </div>
+                    <span class="card-kicker">ذهن آزاد</span>
+                </div>
+                <div class="notes-container">
+                    <label class="sr-only" for="noteInput">متن یادداشت</label>
+                    <textarea id="noteInput" placeholder="فکرها، تصمیم‌ها یا نکته‌های امروز...&#10;&#10;## عنوان&#10;- نکته اول&#10;- نکته دوم"></textarea>
+                    <div class="note-toolbar">
+                        <span>از Markdown پشتیبانی می‌کند</span>
+                        <button class="note-save" id="noteSave" type="button">ذخیره یادداشت</button>
+                    </div>
+                    <div class="note-preview" id="notePreview" aria-live="polite"></div>
+                </div>
+            </section>
+
+            <section class="card card-market" id="currency-section">
+                <div class="card-heading">
+                    <div>
+                        <span class="section-number">۰۳</span>
+                        <h2>نبض ارز</h2>
+                    </div>
+                    <span class="live-pill"><i></i> زنده</span>
+                </div>
+                <div class="currency-container" id="currencyContainer" aria-live="polite">
+                    <div class="loading"><span></span><span></span><span></span></div>
+                </div>
+            </section>
+
+            <section class="card card-gold" id="gold-section">
+                <div class="card-heading">
+                    <div>
+                        <span class="section-number">۰۴</span>
+                        <h2>نمای طلا</h2>
+                    </div>
+                    <span class="card-kicker">XAU / USD</span>
+                </div>
+                <div class="gold-container" id="goldContainer" aria-live="polite">
+                    <div class="loading"><span></span><span></span><span></span></div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-mark">م</div>
+        <p>ساخته‌شده برای روزهایی که قرار است بهتر پیش بروند.</p>
+        <strong>کوچینگ مظاهری</strong>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
